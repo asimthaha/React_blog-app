@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import BlogNavbar from "./BlogNavbar";
 import axios from "axios";
 
-const BlogSearch = () => {
+const BlogMyPost = () => {
   const [inputField, changeInputField] = useState({
-    title: "",
+    userid: sessionStorage.getItem("id"),
   });
 
   const [result, changeResult] = useState([]);
@@ -19,40 +19,20 @@ const BlogSearch = () => {
   const readValue = () => {
     console.log(inputField);
     axios
-      .post("http://127.0.0.1:8000/api/search/", inputField)
+      .post("http://127.0.0.1:8000/api/viewMy/", inputField)
       .then((response) => {
         changeResult(response.data);
         console.log(response.data);
       });
   };
+  useEffect(() => {
+    readValue();
+  });
 
   return (
     <div>
       <BlogNavbar />
       <div className="container">
-        <div className="row">
-          <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
-            <div className="row g-3">
-              <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
-                <label htmlFor="" className="form-label">
-                  Search Blog:
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="title"
-                  value={inputField.title}
-                  onChange={inputHandler}
-                />
-              </div>
-              <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
-                <button onClick={readValue} className="btn btn-info">
-                  Search
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
         <div className="row mt-2">
           <div className="col">
             <div className="row g-3">
@@ -81,4 +61,4 @@ const BlogSearch = () => {
   );
 };
 
-export default BlogSearch;
+export default BlogMyPost;

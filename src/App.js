@@ -6,6 +6,8 @@ import BlogPost from "./components/BlogPost";
 import BlogSearch from "./components/BlogSearch";
 import BlogDelete from "./components/BlogDelete";
 import BlogView from "./components/BlogView";
+import BlogMyPost from "./components/BlogMyPost";
+import BlogMyProfile from "./components/BlogMyProfile";
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
         <Route path="search" element={<BlogSearch />}></Route>
         <Route path="delete" element={<BlogDelete />}></Route>
         <Route path="view" element={<BlogView />}></Route>
+        <Route path="viewMy" element={<BlogMyPost />}></Route>
+        <Route path="viewMyProfile" element={<BlogMyProfile />}></Route>
       </Routes>
     </BrowserRouter>
   );

@@ -6,7 +6,7 @@ const BlogView = () => {
   const [data, changeData] = useState([]);
 
   const fetchData = () => {
-    axios.get("https://jsonplaceholder.typicode.com/posts").then((response) => {
+    axios.post("http://127.0.0.1:8000/api/view/").then((response) => {
       changeData(response.data);
     });
   };
@@ -32,10 +32,9 @@ const BlogView = () => {
                       />
                       <div class="card-header">{value.title}</div>
                       <div class="card-body">
-                        <h5 class="card-title">{value.UserId}</h5>
-                        <p class="card-text">{value.body}</p>
+                        <h5 class="card-title">{value.post}</h5>
                       </div>
-                      <div class="card-footer text-muted">{value.id}</div>
+                      <div class="card-footer text-muted">{value.userid}</div>
                     </div>
                   </div>
                 );
