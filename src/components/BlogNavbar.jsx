@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 const BlogNavbar = () => {
   const navigate = useNavigate();
 
-  if (!sessionStorage.getItem("id")) {
+  if (!sessionStorage.getItem("userid")) {
     navigate("/");
   }
 

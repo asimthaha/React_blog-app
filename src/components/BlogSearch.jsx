@@ -9,10 +9,10 @@ const BlogSearch = () => {
 
   const [result, changeResult] = useState([]);
 
-  const inputHandler = (newEvent) => {
+  const inputHandler = (event) => {
     changeInputField({
       ...inputField,
-      [newEvent.target.name]: newEvent.target.value,
+      [event.target.name]: event.target.value,
     });
   };
 
@@ -68,7 +68,6 @@ const BlogSearch = () => {
                       <div class="card-body">
                         <h5 class="card-title">{value.post}</h5>
                       </div>
-                      <div class="card-footer text-muted">{value.userid}</div>
                     </div>
                   </div>
                 );

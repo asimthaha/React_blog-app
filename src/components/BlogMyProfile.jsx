@@ -4,7 +4,7 @@ import axios from "axios";
 
 const BlogMyProfile = () => {
   const [inputField, changeInputField] = useState({
-    id: sessionStorage.getItem("id"),
+    id: sessionStorage.getItem("userid"),
   });
 
   const [result, changeResult] = useState([]);

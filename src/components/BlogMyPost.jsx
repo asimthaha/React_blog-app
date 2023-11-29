@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import BlogNavbar from "./BlogNavbar";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const BlogMyPost = () => {
   const [inputField, changeInputField] = useState({
-    userid: sessionStorage.getItem("id"),
+    userid: sessionStorage.getItem("userid"),
   });
 
   const [result, changeResult] = useState([]);
@@ -25,9 +26,21 @@ const BlogMyPost = () => {
         console.log(response.data);
       });
   };
+
+  const deletePost = (id) => {
+    axios
+      .delete("http://127.0.0.1:8000/api/deleteMy/?id=" + id)
+      .then((response) => {
+        alert(response.data.status);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   useEffect(() => {
     readValue();
-  });
+  }, []);
 
   return (
     <div>
@@ -37,6 +50,7 @@ const BlogMyPost = () => {
           <div className="col">
             <div className="row g-3">
               {result.map((value, index) => {
+                const linkUrl = `/editMyPost/${value.id}`;
                 return (
                   <div className="col col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
                     <div class="card text-center">
@@ -47,8 +61,25 @@ const BlogMyPost = () => {
                       <div class="card-header">{value.title}</div>
                       <div class="card-body">
                         <h5 class="card-title">{value.post}</h5>
+                        <p>{value.id}</p>
                       </div>
-                      <div class="card-footer text-muted">{value.userid}</div>
+                      <div class="card-footer text-muted d-flex justify-content-end">
+                        <div>
+                          <Link to={linkUrl} className="btn">
+                            <i class="bi bi-pencil-square text-success"></i>
+                          </Link>
+                        </div>
+                        <div>
+                          <button
+                            className="btn"
+                            onClick={() => {
+                              deletePost(value.id);
+                            }}
+                          >
+                            <i class="bi bi-trash3-fill text-danger"></i>
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 );

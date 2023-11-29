@@ -19,10 +19,10 @@ const BlogLogin = () => {
       .then((response) => {
         console.log(response.data);
         if (response.data.length > 0) {
-          const getId = response.data[0].id;
+          const getUserId = response.data[0].id;
           const getName = response.data[0].name;
 
-          sessionStorage.setItem("id", getId);
+          sessionStorage.setItem("userid", getUserId);
           sessionStorage.setItem("name", getName);
           navigate("/add");
         } else {

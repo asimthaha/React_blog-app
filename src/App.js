@@ -8,6 +8,7 @@ import BlogDelete from "./components/BlogDelete";
 import BlogView from "./components/BlogView";
 import BlogMyPost from "./components/BlogMyPost";
 import BlogMyProfile from "./components/BlogMyProfile";
+import BlogEdit from "./components/BlogEdit";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="view" element={<BlogView />}></Route>
         <Route path="viewMy" element={<BlogMyPost />}></Route>
         <Route path="viewMyProfile" element={<BlogMyProfile />}></Route>
+        <Route path="editMyPost/:id" element={<BlogEdit />}></Route>
       </Routes>
     </BrowserRouter>
   );

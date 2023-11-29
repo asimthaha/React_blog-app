@@ -4,7 +4,7 @@ import axios from "axios";
 
 const BlogPost = () => {
   const [inputField, changeInputField] = useState({
-    userid: sessionStorage.getItem("id"),
+    userid: sessionStorage.getItem("userid"),
     title: "",
     post: "",
   });
